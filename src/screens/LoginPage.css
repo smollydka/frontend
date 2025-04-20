@@ -370,7 +370,7 @@ li {
   align-items: center;
   height: 100px;
   width: 100%;
-  background-color: #07ad2e;
+  background-color: #9a07ad;
   color: white;
   padding: 20px 20px 20px 0px;
   box-sizing: border-box;
@@ -397,7 +397,7 @@ li {
 .form-wrapper {
   display: flex;
   justify-content: center; /* centrovanie vodorovne */
-  width: 120%;
+  width: 10%;
 }
 
 .form-row {
