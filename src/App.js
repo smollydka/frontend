@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './screens/LoginPage';
+import Submission from './screens/Submission';
+import ProtectedRoute from './ProtectedRoute';
+import TeacherSubmission from './screens/TeacherSubmission';
+import TeacherSubmissionDetail from './screens/TeacherSubmissionDetail';
+import EditSubmission from './screens/EditSubmission'; // Importuj nový komponent
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/submission"
+          element={
+            <ProtectedRoute>
+              <Submission />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teachersubmission"
+          element={
+            <ProtectedRoute>
+              <TeacherSubmission />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teachersubmission/:triedaId"
+          element={
+            <ProtectedRoute>
+              <TeacherSubmissionDetail />
+            </ProtectedRoute>
+          }
+        />
+
+<Route
+          path="/editzadanie/:id"
+          element={
+            <ProtectedRoute>
+              <EditSubmission />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 

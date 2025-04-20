@@ -1,0 +1,487 @@
+/* LoginPage.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ff80ff, #ff00ff, #8000ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 50px;
+
+}
+
+.login-container-wrapper {
+  flex-wrap: wrap;
+  width: 100%; /* Šírka kontajnera, relatívne k stránke */
+  
+  
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.login-container {
+  flex: 1 1 400px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  color: #000000;
+  border-radius: 10px 0 0 10px;
+}
+
+h2 {
+  margin-top: 130px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000000;
+  
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+ 
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #181717;
+  border-radius: 3px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #e100ff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #9a07ad;
+}
+
+
+
+/* Responzívne nastavenia */
+@media screen and (max-width: 768px) {
+  .login-container-wrapper {
+      flex-direction: column;
+      width: 90%;
+  }
+
+
+  .login-container {
+      border-radius: 0;
+  }
+}
+
+/* Modálne okno */
+/* CSS pre modálne okno */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Polopriehľadné pozadie */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* CSS pre obsah modálneho okna */
+.modal-content {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  width: 80%; /* Nastav šírku podľa potreby */
+  max-width: 900px; /* Maximálna šírka pre väčšie obrazovky */
+  max-height: 80%; /* Maximálna výška */
+  overflow-y: auto; /* Ak je obsah príliš dlhý, objaví sa rolovacia lišta */
+  border-radius: 8px; /* Zaoblené rohy */
+}
+
+/* Prispôsobenie textarea */
+textarea {
+  resize: vertical;
+  max-width: 97%;
+  min-width: 40%;
+  min-height: 50%;
+  width: 97%; /* Zabezpečí, že textové pole bude mať šírku 100% dostupnej šírky */
+  height: 200px; /* Zväčšíme výšku */
+  padding: 10px;
+  font-size: 16px;
+  font-family: monospace; /* Pre lepšiu prácu s kódom */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.modal-content button{
+  margin-top: 10px;
+  width: 100%;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center; /* Vycentruje horizontálne */
+  align-items: center; /* Vycentruje vertikálne */
+ 
+}
+
+ul {
+  
+  display: flex;
+  width: 50%;
+  list-style-type: none; /* Odstránime guličky */
+  padding: 0;
+  display: flex;
+  flex-direction: column;  /* Zobrazenie položiek pod sebou */
+  gap: 10px; /* Rozstup medzi položkami */
+}
+
+/* Stýl pre každé zadanie v zozname */
+li {
+  margin: 10px;
+  background-color: white; /* Biele pozadie pre každé zadanie */
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Jemný tieň */
+}
+
+
+.popis{
+  padding-top: 10px;
+  padding-bottom: 25px;
+  font-size: 20px;
+ 
+}
+
+.nazov{
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.zadaniaNazov{
+  font-size: 35px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Jemný tieň pre text */
+  letter-spacing: 1px;
+}
+
+
+.stav{
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: #9a07ad; /* Zelené pozadie */
+  color: white;
+  padding: 20px 20px 20px 0px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 40px;
+}
+
+.menuButton {
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* Štýl pre menu */
+.menu {
+  width: 200px;
+  background-color: white;
+  position: fixed; /* Fixuje menu na ľavú stranu */
+  top: 100px; /* Začína od vrchu */
+  left: 0; /* Začína od ľavého okraja */
+  padding: 10px;
+  border-radius: 5px;
+  height: 100% ; /* Výška na celú obrazovku */
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: flex-start; /* Rozmiestni položky rovnomerne */
+}
+
+/* Štýl pre položky v menu */
+.menuItem {
+  margin: 5px 0;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.menuItem:hover {
+  background-color: #f0f0f0;
+}
+
+
+.center {
+  flex: 1;
+  text-align: center;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.logoutButton {
+  background: #650572; /* Červená farba pre odhlásenie */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  height: 50px;
+}
+
+.logoutButton:hover {
+  background-color: #3c0343;
+}
+/*knec bannneru*/
+
+
+/* TeacherSubmissionScreen.css */
+
+/* Obal okolo všetkých tried */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Každá trieda je kartička */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Jemný tieň pre každú kartičku */
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Nadpis triedy */
+.card h3 {
+  font-size: 23px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+/* Počet zadaní */
+.card p {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Tlačidlo na vstup do triedy */
+.card button {
+  background-color: #e100ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  align-self: center;
+}
+
+/* Efekt pri hoveri tlačidla */
+.card button:hover {
+  background-color: #9a07ad;
+}
+
+/* Efekt pri hoveri na kartičke */
+.card:hover {
+  transform: scale(1.05);
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: #9a07ad;
+  color: white;
+  padding: 20px 20px 20px 0px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Prispôsobenie pre mobilné zariadenia */
+/* Prispôsobenie pre mobilné zariadenia */
+@media screen and (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 60%;
+  }
+}
+
+
+.form-wrapper {
+  display: flex;
+  justify-content: center; /* centrovanie vodorovne */
+  width: 120%;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center; /* stred aj vnútri */
+  align-items: flex-start;
+  width: 120%;
+  max-width: 1200px; /* obmedz šírku kontajnera */
+  padding: 2rem;
+  margin: 0 auto; /* centrovanie samotného kontajnera */
+  box-sizing: border-box;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row; /* Dôležité: vedľa seba */
+  gap: 2rem;
+  width: 100%;
+  align-items: flex-start;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.zadanie-form,
+.test-form {
+  flex: 1;
+  background-color: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  min-width: 45%;
+}
+
+.zadanie-form label,
+.test-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.zadanie-form input,
+.test-form input,
+.zadanie-form textarea,
+.test-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.zadanie-form button,
+.test-form button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+
+.test-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.test-form label {
+  margin-bottom: 1rem;
+}
+
+.zadanie-form button:hover,
+.test-form button:hover {
+  background-color: #45a049;
+}
+
+
+.zadanie-form button:hover {
+  background-color: #0056b3;
+}
