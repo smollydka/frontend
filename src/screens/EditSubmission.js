@@ -20,7 +20,7 @@ function EditSubmission() {
     const fetchZadanie = async () => {
       const token = localStorage.getItem('token');
       try {
-        const response = await fetch(`http://localhost:5000/zadanie/${id}`, {
+        const response = await fetch(`https://backend-server-6zvl.onrender.com/zadanie/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -47,7 +47,7 @@ function EditSubmission() {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:5000/zadania/${id}`, {
+      const response = await fetch(`https://backend-server-6zvl.onrender.com/zadania/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ function EditSubmission() {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch('http://localhost:5000/tests', {
+      const response = await fetch('https://backend-server-6zvl.onrender.com/tests', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

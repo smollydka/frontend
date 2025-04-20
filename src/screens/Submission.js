@@ -23,7 +23,7 @@ function Submission() {
     }
   
     // Načítame zadania z API
-    fetch('http://localhost:5000/zadania', {
+    fetch('https://backend-server-6zvl.onrender.com/zadania', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`, // Posielame token v hlavičke
@@ -71,7 +71,7 @@ function Submission() {
     const token = localStorage.getItem('token');
     const zadanieId = selectedZadanie.id;
 
-    fetch('http://localhost:5000/odovzdat', {
+    fetch('https://backend-server-6zvl.onrender.com/odovzdat', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

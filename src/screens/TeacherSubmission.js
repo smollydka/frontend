@@ -11,7 +11,7 @@ function TeacherSubmission() {
     // Získame zoznam tried s počtom zadaní
     const fetchTriedy = async () => {
       try {
-        const response = await fetch('http://localhost:5000/teachersubmission');
+        const response = await fetch('https://backend-server-6zvl.onrender.com/teachersubmission');
         const data = await response.json();
         
         if (data.success) {

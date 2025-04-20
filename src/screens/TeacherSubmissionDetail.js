@@ -10,7 +10,7 @@ function TeacherSubmissionDetail() {
     const fetchZadania = async () => {
       const token = localStorage.getItem('token');
       try {
-        const response = await fetch(`http://localhost:5000/zadania/${triedaId}`, {
+        const response = await fetch(`https://backend-server-6zvl.onrender.com/zadania/${triedaId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
