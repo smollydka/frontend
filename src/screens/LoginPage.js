@@ -37,18 +37,19 @@ function LoginPage() {
       }
     } catch (err) {
       console.error('Chyba:', err);
-      setError('Chyba servera. Skúste neskôr.');
+      setError('Zadané prihlasovacie údaje nie sú správne.');
     }
   };
 
 
   return (
-    <div>
-  <header>SPŠE PO Programovanie 1.SA </header>
+    <div className="wrapper">
+  <header>Systém na správu stredoškolských programovacích zadaní </header>
   <div className="login-container-wrapper">
   <div className="login-container">
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <h2>Prihlásenie</h2>
+      {error && <p style={{ color: 'red', fontSize: '18px', textAlign: 'center'
+       }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Meno:</label>
@@ -70,7 +71,7 @@ function LoginPage() {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Prihlásiť sa</button>
       </form>
     </div>
     <div className="image-container"></div>

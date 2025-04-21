@@ -22,11 +22,17 @@ header {
 
 }
 
+.wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .login-container-wrapper {
+
   flex-wrap: wrap;
   width: 100%; /* Šírka kontajnera, relatívne k stránke */
-  
-  
+ 
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -46,7 +52,7 @@ header {
 }
 
 h2 {
-  margin-top: 130px;
+  margin-top: 10px;
   text-align: center;
   margin-bottom: 20px;
   color: #000000;
@@ -93,7 +99,8 @@ button:hover {
 @media screen and (max-width: 768px) {
   .login-container-wrapper {
       flex-direction: column;
-      width: 90%;
+      width: 96%;
+      margin: 2%;
   }
 
 
@@ -160,7 +167,7 @@ textarea {
 ul {
   
   display: flex;
-  width: 50%;
+  width: 100%;
   list-style-type: none; /* Odstránime guličky */
   padding: 0;
   display: flex;
@@ -170,6 +177,7 @@ ul {
 
 /* Stýl pre každé zadanie v zozname */
 li {
+  /* position: relative; */
   margin: 10px;
   background-color: white; /* Biele pozadie pre každé zadanie */
   padding: 20px;
@@ -204,6 +212,23 @@ li {
   font-weight: bold;
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+.datum-uzavretia {
+   position: relative; 
+  top: 10px;
+  /* left: 15px; */
+ 
+  font-size: 20px;
+  font-weight: bolder;
+  color: #ff0505;
+  background-color: #fff4f4;
+  padding: 3px 3px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  
+ 
+
 }
 
 
@@ -484,4 +509,12 @@ li {
 
 .zadanie-form button:hover {
   background-color: #0056b3;
+}
+
+
+.spinner {
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+  margin: 40px 0;
 }

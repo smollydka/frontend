@@ -30,8 +30,10 @@ const Banner = () => {
         )}
       </div>
 
-      <div className="center">
+      <div className="center" >
+        <h2 className='zadaniaNazov'>
         {username}
+        </h2>
       </div>
 
       <div className="right">
