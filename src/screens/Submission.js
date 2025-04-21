@@ -101,18 +101,19 @@ function Submission() {
           setSolutionCode('');
           fetchZadania(); // 🔄 aktualizuj zoznam po odovzdaní
         } else {
-          setError('Chyba pri odovzdávaní zadania.');
+          setError('Chyba pri odovzdávaní zadania.');  setIsModalOpen(false); 
         }
       })
       .catch((err) => {
         console.error('Chyba pri odovzdávaní zadania:', err);
         setError('Chyba servera pri odovzdávaní zadania.');
+        setIsModalOpen(false); 
       });
   };
 
   return (
     <div className="wrapper">
-      {error && <p>{error}</p>}
+      {/* {error && <p>{error}</p>} */}
       <Banner />
       <h2 className='zadaniaNazov'>Dostupné zadania:</h2>
 
@@ -216,11 +217,25 @@ function Submission() {
       {submissionSuccess && (
         <div className="modal">
           <div className="modal-content" style={{ width: '250px' }}>
-            <h3>Úspešne ste odovzdali zadanie!</h3>
+            <h3>✅ Úspešne ste odovzdali zadanie!</h3>
             <button onClick={closeModal}>Zavrieť</button>
           </div>
         </div>
       )}
+
+  {error && (
+    <div className="modal">
+      <div className="modal-content" style={{ width: '250px' }}>
+        <h3>❌ CHYBA</h3>
+        <p>{error}</p>
+        <button onClick={() => {
+  setError('');
+  window.location.reload(); // 💡 manuálny refresh
+}}>Zavrieť</button>
+      </div>
+    </div>
+  )}
+
     </div>
   );
 }
