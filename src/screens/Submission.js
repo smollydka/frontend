@@ -171,6 +171,8 @@ function Submission() {
   )}
 </div>
 
+<div className='popis'> {zadanie.poznamky}</div>
+
                 <button onClick={() => openModal(zadanie)}>ODOVZDAŤ</button>
               </li>
             ))}
