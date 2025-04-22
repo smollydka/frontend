@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import LogoutButton from '../components/LogoutButton';
 import Banner from '../components/Banner';
 import StudentCard from '../components/StudentCard';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function Submission() {
   const [zadania, setZadania] = useState([]);
@@ -12,6 +15,7 @@ function Submission() {
   const [solutionCode, setSolutionCode] = useState('');
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [loading, setLoading] = useState(false); // 🔄 loading stav
+  const navigate = useNavigate();
 
   const formatDatum = (datumString) => {
     const datum = new Date(datumString);
@@ -111,6 +115,8 @@ function Submission() {
       });
   };
 
+  const studentId = localStorage.getItem('id');
+
   return (
     <div className="wrapper">
       {/* {error && <p>{error}</p>} */}
@@ -171,9 +177,14 @@ function Submission() {
   )}
 </div>
 
-<div className='popis'> {zadanie.poznamky}</div>
 
-                <button onClick={() => openModal(zadanie)}>ODOVZDAŤ</button>
+
+<button onClick={() => navigate(`/zadania/${zadanie.id}/student/${studentId}`)}>
+  Detaily testov
+</button>
+
+
+                <button onClick={() => openModal(zadanie)} style={{marginTop: '10px'}}>Odovzdať</button>
               </li>
             ))}
           </ul>

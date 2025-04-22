@@ -7,6 +7,7 @@ function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
+  const [id, setId] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -18,13 +19,15 @@ function LoginPage() {
         username,
         password,
         role,
+        id,
       });
 
       if (response.data.success) {
         // Uloženie tokenu do LocalStorage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username);
-        localStorage.setItem('role', response.data.role); // Uloženie roly
+        localStorage.setItem('role', response.data.role);
+        localStorage.setItem('id', response.data.id); // Uloženie roly
         console.log(response.data.role)
         // Presmerovanie podľa roly
         if (response.data.role === 'ucitel') {

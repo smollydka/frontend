@@ -5,7 +5,7 @@ import ProtectedRoute from './ProtectedRoute';
 import TeacherSubmission from './screens/TeacherSubmission';
 import TeacherSubmissionDetail from './screens/TeacherSubmissionDetail';
 import EditSubmission from './screens/EditSubmission'; // Importuj nový komponent
-
+import SubmissionTests from './screens/SubmissionTests';
 
 function App() {
   return (
@@ -36,6 +36,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+<Route path="/zadania/:zadanieId/student/:studentId" element={<ProtectedRoute><SubmissionTests /></ProtectedRoute>} />
 
 <Route
           path="/editzadanie/:id"
