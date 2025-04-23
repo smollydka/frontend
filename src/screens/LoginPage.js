@@ -47,39 +47,40 @@ function LoginPage() {
 
   return (
     <div className="wrapper">
-  <header>Systém na správu stredoškolských programovacích zadaní </header>
-  <div className="login-container-wrapper">
-  <div className="login-container">
-      <h2>Prihlásenie</h2>
-      {error && <p style={{ color: 'red', fontSize: '18px', textAlign: 'center'
-       }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Meno:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+      <header>Systém na správu stredoškolských programovacích zadaní </header>
+      <div className="login-container-wrapper">
+        <div className="login-container">
+          <h2>Prihlásenie</h2>
+          {error && <p style={{
+            color: 'red', fontSize: '18px', textAlign: 'center'
+          }}>{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="username">Meno:</label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Heslo:</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit">Prihlásiť sa</button>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Heslo:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Prihlásiť sa</button>
-      </form>
+        <div className="image-container"></div>
+      </div>
     </div>
-    <div className="image-container"></div>
-  </div>
-</div>
 
   );
 }

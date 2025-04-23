@@ -15,6 +15,10 @@ function Submission() {
   const [solutionCode, setSolutionCode] = useState('');
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [loading, setLoading] = useState(false); // 🔄 loading stav
+  const [datumVytvorenia, setDatumVytvorenia] = useState('');
+  const [stats, setStats] = useState(null); // Pre štatistiky
+  const [statsLoading, setStatsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const formatDatum = (datumString) => {
@@ -65,8 +69,43 @@ function Submission() {
       });
   };
 
+  const fetchStats = (studentId) => {
+    setStatsLoading(true); // Začiatok načítavania štatistík
+
+    const token = localStorage.getItem('token');
+
+    fetch(`https://backend-server-6zvl.onrender.com/student/${studentId}/statistics`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setStats(data.statistics);
+          console.log('Načítané štatistiky:', data.statistics);
+        } else {
+          //setError('Chyba pri načítavaní štatistík.');
+          console.log('Načítané štatistiky:', data.statistics);
+        }
+      })
+      .catch((err) => {
+        console.error('Chyba pri získavaní štatistík', err);
+        // setError('Chyba servera pri získavaní štatistík.');
+      })
+      .finally(() => {
+        setStatsLoading(false); // Konečný stav načítavania štatistík
+      });
+  };
+
+
   useEffect(() => {
-    fetchZadania();
+    fetchZadania(); // Načítanie zadaní pri načítaní komponenty
+    const studentId = localStorage.getItem('id');
+    if (studentId) {
+      fetchStats(studentId); // Načítanie štatistík, ak je prítomné studentId
+    }
   }, []);
 
   const openModal = (zadanie) => {
@@ -105,150 +144,198 @@ function Submission() {
           setSolutionCode('');
           fetchZadania(); // 🔄 aktualizuj zoznam po odovzdaní
         } else {
-          setError('Chyba pri odovzdávaní zadania.');  setIsModalOpen(false); 
+          setError('Chyba pri odovzdávaní zadania.'); setIsModalOpen(false);
         }
       })
       .catch((err) => {
         console.error('Chyba pri odovzdávaní zadania:', err);
         setError('Chyba servera pri odovzdávaní zadania.');
-        setIsModalOpen(false); 
+        setIsModalOpen(false);
       });
   };
 
   const studentId = localStorage.getItem('id');
 
   return (
-    <div className="wrapper">
-      {/* {error && <p>{error}</p>} */}
-      <Banner />
-      <h2 className='zadaniaNazov'>Dostupné zadania:</h2>
+    <div>
 
-      {loading ? (
-        <div className="spinner">🔄 Načítavam zadania...</div>
-      ) : zadania.length === 0 ? (
-        <p>Žiadne zadania na zobrazenie.</p>
-      ) : (
-        <div className="centered-container">
-          <ul>
-            {zadania.map((zadanie) => (
-              <li key={zadanie.id}>
-                <div className="hlavicka">
-                  <div className="datum-uzavretia">
-                    Deadline: {formatDatum(zadanie.datum_uzavretia)}
+      <div className='report' style={{
+        position: 'fixed',
+        top: 207,
+        left: '5%',
+        width: '400px',
+        height: '450px',
+        padding: '20px',
+        zIndex: 1000
+      }}>
+
+
+        <div>
+          <h4>Stručný prehľad: </h4>
+          <ul className="stats-list">
+            <li>
+              Počet odovzdaných zadaní:
+              <span className="stats-value">{stats ? stats.odovzdane : 'Načítavam...'}</span>
+            </li>
+            <li>
+              Počet neodovzdaných zadaní:
+              <span className="stats-value">{stats ? stats.neodovzdane : 'Načítavam...'}</span>
+            </li>
+            <li>
+              Počet otvorených zadaní:
+              <span className="stats-value">{stats ? stats.otvorene : 'Načítavam...'}</span>
+            </li>
+            <li>
+              Počet zadaní po uplynutí deadline:
+              <span className="stats-value">{stats ? stats.poDeadline : 'Načítavam...'}</span>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      <div className="wrapper">
+        {/* {error && <p>{error}</p>} */}
+        <Banner />
+        <h2 className='zadaniaNazov' style={{ marginTop: '120px' }}>Dostupné zadania:</h2>
+
+        {loading ? (
+          <div className="spinner" style={{ color: 'white' }}>🔄 Načítavam zadania...</div>
+        ) : zadania.length === 0 ? (
+          <p>Žiadne zadania na zobrazenie.</p>
+        ) : (
+          <div className="centered-container">
+            <ul>
+              {zadania.map((zadanie) => (
+                <li key={zadanie.id} style={{ width: '170%' }}>
+                  <div className="hlavicka">
+                    <div className="datum-vytvorenia" >
+                      📅 Vytvorené: {formatDatum(zadanie.datum_vytvorenia)}
+                    </div>
+                    <div className="datum-uzavretia">
+                      ⏰ Deadline:  {formatDatum(zadanie.datum_uzavretia)}
+                    </div>
+
+                    <div className='nazov'> {zadanie.nazov}</div>
                   </div>
-                  <div className='nazov'> {zadanie.nazov}</div>
-                </div>
 
-                <div className='popis'> {zadanie.popis}</div>
+                  <div className='popis'><pre style={{ whiteSpace: 'pre-wrap'}}>{zadanie.popis}</pre></div>
 
-                {/* <div className='stav'>
+                  {/* <div className='stav'>
                   Hodnotenie posledného odovzdania:
                   <div className="stav" style={{ color: '#ff00f5' }}>
-                    {zadanie.posledne_odovzdanie_stav
-                      ? zadanie.posledne_odovzdanie_stav
-                      : 'Zadanie ešte nebolo odovzdané'}
+                  {zadanie.posledne_odovzdanie_stav
+                  ? zadanie.posledne_odovzdanie_stav
+                  : 'Zadanie ešte nebolo odovzdané'}
                   </div>
-                </div> */}
+                  </div> */}
 
-<div className='stav'>
-  Hodnotenie posledného odovzdania:
+                  <div className='stav'>
+                    Hodnotenie posledného odovzdania:
 
-  {zadanie.posledne_odovzdanie_stav ? (
-    (() => {
-      let parsedStav;
-      try {
-        parsedStav = JSON.parse(zadanie.posledne_odovzdanie_stav);
-      } catch (e) {
-        return <div style={{ color: '#ff00f5' }}>{zadanie.posledne_odovzdanie_stav}</div>;
-      }
+                    {zadanie.posledne_odovzdanie_stav ? (
+                      (() => {
+                        let parsedStav;
+                        try {
+                          parsedStav = JSON.parse(zadanie.posledne_odovzdanie_stav);
+                        } catch (e) {
+                          return <div style={{ color: '#ff00f5' }}>{zadanie.posledne_odovzdanie_stav}</div>;
+                        }
 
-      return (
-        <div className="vysledok" >
-          <div>✅ Passed tests: {parsedStav.score}</div>
-          <div>📋 Total tests: {parsedStav.total}</div>
-          <div>🏁 Final score: {parsedStav.percent}</div>
-        </div>
-      );
-    })()
-  ) : (
-    <div className="stav" style={{ color: '#ff00f5' }}>
-      Zadanie ešte nebolo odovzdané
-    </div>
-  )}
-</div>
-
-
-
-<button onClick={() => navigate(`/zadania/${zadanie.id}/student/${studentId}`)}>
-  Detaily testov
-</button>
+                        return (
+                          <div className="vysledok" >
+                            <div>✅ Passed tests: {parsedStav.score}</div>
+                            <div>📋 Total tests: {parsedStav.total}</div>
+                            <div>🏁 Final score: {parsedStav.percent}</div>
+                          </div>
+                        );
+                      })()
+                    ) : (
+                      <div className="stav" style={{ color: '#ff00f5' }}>
+                        Zadanie ešte nebolo odovzdané
+                      </div>
+                    )}
+                  </div>
 
 
-                <button onClick={() => openModal(zadanie)} style={{marginTop: '10px'}}>Odovzdať</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
-      {isModalOpen && selectedZadanie && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Odovzdanie pre: {selectedZadanie.nazov}</h3>
-            <form onSubmit={handleSubmit}>
-              <textarea
-                placeholder="Napíšte kód riešenia..."
-                rows="10"
-                cols="100"
-                value={solutionCode}
-                onChange={(e) => setSolutionCode(e.target.value)}
-              />
-               <br />
-        {/* 👇 Pridaný input na načítanie súboru */}
-        <input
-          type="file"
-          accept=".py,.txt"
-          onChange={(e) => {
-            const file = e.target.files[0];
-            if (file) {
-              const reader = new FileReader();
-              reader.onload = (event) => {
-                setSolutionCode(event.target.result);
-              };
-              reader.readAsText(file);
-            }
-          }}
-        />
-        <br />
-              <button type="submit">Odovzdať</button>
-            </form>
-            <button onClick={closeModal}>Zavrieť</button>
+                  <button onClick={() => navigate(`/zadania/${zadanie.id}/student/${studentId}`)}>
+                    Detaily testov
+                  </button>
+
+
+                  {new Date(zadanie.datum_uzavretia) < new Date() ? (
+                    <p style={{ color: 'red', marginTop: '10px' }}>⛔ Deadline pre toto zadanie už uplynul</p>
+                  ) : (
+                    <button onClick={() => openModal(zadanie)} style={{ marginTop: '10px' }}>
+                      📤 Odovzdať
+                    </button>
+                  )}
+
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      )}
+        )}
 
-      {submissionSuccess && (
-        <div className="modal">
-          <div className="modal-content" style={{ width: '250px' }}>
-            <h3>✅ Úspešne ste odovzdali zadanie!</h3>
-            <button onClick={closeModal}>Zavrieť</button>
+        {isModalOpen && selectedZadanie && (
+          <div className="modal">
+            <div className="modal-content">
+              <h3>Odovzdanie pre: {selectedZadanie.nazov}</h3>
+              <form onSubmit={handleSubmit}>
+                <textarea
+                  placeholder="Napíšte kód riešenia..."
+                  rows="10"
+                  cols="100"
+                  value={solutionCode}
+                  onChange={(e) => setSolutionCode(e.target.value)}
+                />
+                <br />
+                {/* 👇 Pridaný input na načítanie súboru */}
+                <input
+                  type="file"
+                  accept=".py,.txt"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        setSolutionCode(event.target.result);
+                      };
+                      reader.readAsText(file);
+                    }
+                  }}
+                />
+                <br />
+                <button type="submit">Odovzdať</button>
+              </form>
+              <button onClick={closeModal}>Zavrieť</button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-  {error && (
-    <div className="modal">
-      <div className="modal-content" style={{ width: '250px' }}>
-        <h3>❌ CHYBA</h3>
-        <p>{error}</p>
-        <button onClick={() => {
-  setError('');
-  window.location.reload(); // 💡 manuálny refresh
-}}>Zavrieť</button>
+        {submissionSuccess && (
+          <div className="modal">
+            <div className="modal-content" style={{ width: '250px' }}>
+              <h3>✅ Úspešne ste odovzdali zadanie!</h3>
+              <button onClick={closeModal}>Zavrieť</button>
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <div className="modal">
+            <div className="modal-content" style={{ width: '250px' }}>
+              <h3>❌ CHYBA</h3>
+              <p>{error}</p>
+              <button onClick={() => {
+                setError('');
+                window.location.reload(); // 💡 manuálny refresh
+              }}>Zavrieť</button>
+            </div>
+          </div>
+        )}
+
       </div>
-    </div>
-  )}
-
     </div>
   );
 }

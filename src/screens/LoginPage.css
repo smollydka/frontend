@@ -31,8 +31,9 @@ header {
 .login-container-wrapper {
 
   flex-wrap: wrap;
-  width: 100%; /* Šírka kontajnera, relatívne k stránke */
- 
+  width: 100%;
+  /* Šírka kontajnera, relatívne k stránke */
+
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -56,7 +57,7 @@ h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #000000;
-  
+
 }
 
 .form-group {
@@ -66,7 +67,7 @@ h2 {
 label {
   display: block;
   margin-bottom: 5px;
- 
+
 }
 
 input {
@@ -98,14 +99,14 @@ button:hover {
 /* Responzívne nastavenia */
 @media screen and (max-width: 768px) {
   .login-container-wrapper {
-      flex-direction: column;
-      width: 96%;
-      margin: 2%;
+    flex-direction: column;
+    width: 96%;
+    margin: 2%;
   }
 
 
   .login-container {
-      border-radius: 0;
+    border-radius: 0;
   }
 }
 
@@ -117,7 +118,8 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Polopriehľadné pozadie */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Polopriehľadné pozadie */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,11 +131,16 @@ button:hover {
   text-align: center;
   background-color: white;
   padding: 20px;
-  width: 80%; /* Nastav šírku podľa potreby */
-  max-width: 900px; /* Maximálna šírka pre väčšie obrazovky */
-  max-height: 80%; /* Maximálna výška */
-  overflow-y: auto; /* Ak je obsah príliš dlhý, objaví sa rolovacia lišta */
-  border-radius: 8px; /* Zaoblené rohy */
+  width: 80%;
+  /* Nastav šírku podľa potreby */
+  max-width: 900px;
+  /* Maximálna šírka pre väčšie obrazovky */
+  max-height: 80%;
+  /* Maximálna výška */
+  overflow-y: auto;
+  /* Ak je obsah príliš dlhý, objaví sa rolovacia lišta */
+  border-radius: 8px;
+  /* Zaoblené rohy */
 }
 
 /* Prispôsobenie textarea */
@@ -142,72 +149,96 @@ textarea {
   max-width: 97%;
   min-width: 40%;
   min-height: 50%;
-  width: 97%; /* Zabezpečí, že textové pole bude mať šírku 100% dostupnej šírky */
-  height: 200px; /* Zväčšíme výšku */
+  width: 97%;
+  /* Zabezpečí, že textové pole bude mať šírku 100% dostupnej šírky */
+  height: 200px;
+  /* Zväčšíme výšku */
   padding: 10px;
   font-size: 16px;
-  font-family: monospace; /* Pre lepšiu prácu s kódom */
+  font-family: monospace;
+  /* Pre lepšiu prácu s kódom */
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 
-.modal-content button{
+.modal-content button {
   margin-top: 10px;
   width: 100%;
 }
 
 .centered-container {
   display: flex;
-  justify-content: center; /* Vycentruje horizontálne */
-  align-items: center; /* Vycentruje vertikálne */
- 
+  justify-content: center;
+  /* Vycentruje horizontálne */
+  align-items: center;
+  /* Vycentruje vertikálne */
+
 }
 
 ul {
-  
+
   display: flex;
   width: 100%;
-  list-style-type: none; /* Odstránime guličky */
+  list-style-type: none;
+  /* Odstránime guličky */
   padding: 0;
   display: flex;
-  flex-direction: column;  /* Zobrazenie položiek pod sebou */
-  gap: 10px; /* Rozstup medzi položkami */
+  flex-direction: column;
+  /* Zobrazenie položiek pod sebou */
+  gap: 10px;
+  /* Rozstup medzi položkami */
 }
 
 /* Stýl pre každé zadanie v zozname */
 li {
   /* position: relative; */
   margin: 10px;
-  background-color: white; /* Biele pozadie pre každé zadanie */
+  background-color: white;
+  /* Biele pozadie pre každé zadanie */
   padding: 20px;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Jemný tieň */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Jemný tieň */
+}
+
+.report {
+
+  /* position: relative; */
+  margin: 10px;
+  background-color: white;
+  /* Biele pozadie pre každé zadanie */
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Jemný tieň */
+
 }
 
 
-.popis{
+.popis {
   padding-top: 10px;
   padding-bottom: 25px;
   font-size: 20px;
- 
+
 }
 
-.nazov{
+.nazov {
   font-size: 23px;
   font-weight: bold;
 }
 
-.zadaniaNazov{
+.zadaniaNazov {
   font-size: 35px;
   font-weight: bold;
   color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Jemný tieň pre text */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  /* Jemný tieň pre text */
   letter-spacing: 1px;
 }
 
 
-.stav{
+.stav {
   font-size: 18px;
   font-weight: bold;
   padding-bottom: 5px;
@@ -215,10 +246,10 @@ li {
 }
 
 .datum-uzavretia {
-   position: relative; 
+  position: relative;
   top: 10px;
   /* left: 15px; */
- 
+
   font-size: 20px;
   font-weight: bolder;
   color: #ff0505;
@@ -226,8 +257,25 @@ li {
   padding: 3px 3px;
   border-radius: 4px;
   margin-bottom: 20px;
-  
- 
+
+
+
+}
+
+.datum-vytvorenia {
+  position: relative;
+  top: 10px;
+  /* left: 15px; */
+
+  font-size: 20px;
+  font-weight: bolder;
+  color: #000000;
+  background-color: #defede;
+  padding: 3px 3px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+
+
 
 }
 
@@ -238,7 +286,8 @@ li {
   align-items: center;
   height: 100px;
   width: 100%;
-  background-color: #9a07ad; /* Zelené pozadie */
+  background-color: #9a07ad;
+  /* Zelené pozadie */
   color: white;
   padding: 20px 20px 20px 0px;
   box-sizing: border-box;
@@ -270,16 +319,21 @@ li {
 .menu {
   width: 200px;
   background-color: white;
-  position: fixed; /* Fixuje menu na ľavú stranu */
-  top: 100px; /* Začína od vrchu */
-  left: 0; /* Začína od ľavého okraja */
+  position: fixed;
+  /* Fixuje menu na ľavú stranu */
+  top: 100px;
+  /* Začína od vrchu */
+  left: 0;
+  /* Začína od ľavého okraja */
   padding: 10px;
   border-radius: 5px;
-  height: 100% ; /* Výška na celú obrazovku */
+  height: 100%;
+  /* Výška na celú obrazovku */
   display: flex;
-  
+
   flex-direction: column;
-  justify-content: flex-start; /* Rozmiestni položky rovnomerne */
+  justify-content: flex-start;
+  /* Rozmiestni položky rovnomerne */
 }
 
 /* Štýl pre položky v menu */
@@ -311,7 +365,8 @@ li {
 }
 
 .logoutButton {
-  background: #650572; /* Červená farba pre odhlásenie */
+  background: #650572;
+  /* Červená farba pre odhlásenie */
   border: none;
   color: white;
   padding: 8px 16px;
@@ -323,6 +378,7 @@ li {
 .logoutButton:hover {
   background-color: #3c0343;
 }
+
 /*knec bannneru*/
 
 
@@ -344,7 +400,8 @@ li {
   padding: 20px;
   width: 250px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Jemný tieň pre každú kartičku */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Jemný tieň pre každú kartičku */
   transition: transform 0.3s;
   display: flex;
   flex-direction: column;
@@ -421,7 +478,8 @@ li {
 
 .form-wrapper {
   display: flex;
-  justify-content: center; /* centrovanie vodorovne */
+  justify-content: center;
+  /* centrovanie vodorovne */
   width: 10%;
 }
 
@@ -429,18 +487,22 @@ li {
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  justify-content: center; /* stred aj vnútri */
+  justify-content: center;
+  /* stred aj vnútri */
   align-items: flex-start;
   width: 120%;
-  max-width: 1200px; /* obmedz šírku kontajnera */
+  max-width: 1200px;
+  /* obmedz šírku kontajnera */
   padding: 2rem;
-  margin: 0 auto; /* centrovanie samotného kontajnera */
+  margin: 0 auto;
+  /* centrovanie samotného kontajnera */
   box-sizing: border-box;
 }
 
 .form-container {
   display: flex;
-  flex-direction: row; /* Dôležité: vedľa seba */
+  flex-direction: row;
+  /* Dôležité: vedľa seba */
   gap: 2rem;
   width: 100%;
   align-items: flex-start;
@@ -455,7 +517,7 @@ li {
   padding: 1.5rem;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   min-width: 45%;
 }
 
@@ -517,4 +579,23 @@ li {
   color: #555;
   text-align: center;
   margin: 40px 0;
+}
+
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  max-width: 400px;
+}
+
+.stats-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.stats-value {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 10px;
 }
