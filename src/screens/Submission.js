@@ -164,9 +164,9 @@ function Submission() {
         top: 207,
         left: '5%',
         width: '400px',
-        height: '450px',
+        height: '400px',
         padding: '20px',
-        zIndex: 1000
+        zIndex: 998
       }}>
 
 
@@ -192,7 +192,23 @@ function Submission() {
           </ul>
 
         </div>
+
+
+
       </div>
+        <div className="events-box">
+          <h4 className="events-title">NAJBLIŽŠIE UDALOSTI:</h4>
+          <ul className="events-list">
+            <li>
+              Písomka reťazce + zoznamy:
+              <span className="events-value">19.8.2025</span>
+            </li>
+            <li>
+              Deadline zadania:
+              <span className="events-value">30.04.2025 03:52</span>
+            </li>
+          </ul>
+        </div>
       <div className="wrapper">
         {/* {error && <p>{error}</p>} */}
         <Banner />
@@ -218,7 +234,7 @@ function Submission() {
                     <div className='nazov'> {zadanie.nazov}</div>
                   </div>
 
-                  <div className='popis'><pre style={{ whiteSpace: 'pre-wrap'}}>{zadanie.popis}</pre></div>
+                  <div className='popis'><pre style={{ whiteSpace: 'pre-wrap' }}>{zadanie.popis}</pre></div>
 
                   {/* <div className='stav'>
                   Hodnotenie posledného odovzdania:

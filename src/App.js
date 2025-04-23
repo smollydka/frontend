@@ -6,6 +6,7 @@ import TeacherSubmission from './screens/TeacherSubmission';
 import TeacherSubmissionDetail from './screens/TeacherSubmissionDetail';
 import EditSubmission from './screens/EditSubmission'; // Importuj nový komponent
 import SubmissionTests from './screens/SubmissionTests';
+import ProfilePage from './screens/ProfilePage';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+<Route path="/profile" element={<ProfilePage />} />
 
 <Route path="/zadania/:zadanieId/student/:studentId" element={<ProtectedRoute><SubmissionTests /></ProtectedRoute>} />
 
