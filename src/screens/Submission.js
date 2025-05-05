@@ -159,7 +159,7 @@ function Submission() {
   return (
     <div>
 
-      <div className='report' style={{
+      {/* <div className='report' style={{
         position: 'fixed',
         top: 207,
         left: '5%',
@@ -208,11 +208,11 @@ function Submission() {
               <span className="events-value">30.04.2025 03:52</span>
             </li>
           </ul>
-        </div>
+        </div> */}
       <div className="wrapper">
         {/* {error && <p>{error}</p>} */}
         <Banner />
-        <h2 className='zadaniaNazov' style={{ marginTop: '120px' }}>Dostupné zadania:</h2>
+        <h2 className='zadaniaNazov' style={{ marginTop: '120px' , marginLeft: '70%'}}>Dostupné zadania:</h2>
 
         {loading ? (
           <div className="spinner" style={{ color: 'white' }}>🔄 Načítavam zadania...</div>

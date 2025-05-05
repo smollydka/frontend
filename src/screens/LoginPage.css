@@ -25,7 +25,8 @@ header {
 .wrapper {
   width: 100%;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 ;
+  margin-left: -35%;
 }
 
 .login-container-wrapper {

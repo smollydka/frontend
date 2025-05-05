@@ -91,11 +91,19 @@ function SubmissionTests() {
 
     return (
         <div>
-            <div className='report' style={{
-                position: 'fixed',
+          
+
+            <Banner />
+            <div className="wrapper" style={{ marginTop: '120px' }} >
+                
+                <h2 className='zadaniaNazov' >Odovzdania pre zadanie: <br></br>  {zadanieNazov} </h2>
+                <button style={{ width: '30%', marginLeft: '35%' }} onClick={() => navigate(-1)}>⬅ Späť</button>
+
+                <div className='report' style={{
+                
                 top: 290,
-                left: '5%',
-                width: '400px',
+                left: '50%',
+                width: '100%',
                 height: '400px',
 
                 padding: '20px',
@@ -113,12 +121,6 @@ function SubmissionTests() {
                     </ul>
                 </div>
             </div>
-
-            <Banner />
-            <div className="wrapper" style={{ marginTop: '120px' }} >
-                <h2 className='zadaniaNazov' >Odovzdania pre zadanie: <br></br>  {zadanieNazov} </h2>
-                <button style={{ width: '30%', marginLeft: '35%' }} onClick={() => navigate(-1)}>⬅ Späť</button>
-
                 {loading ? (
                     <p style={{ color: 'white' }}>🔄 Načítavam...</p>
                 ) : error ? (
